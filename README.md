@@ -13,6 +13,6 @@
 - [Sơ đồ thực thể]
 - [Cơ Sở Dữ Liệu]
 
-[Mô Tả đồ án]: 
+[Mô Tả đồ án]: https://github.com/PhamTienThanhCong/Quan-ly-dao-tao/blob/master/TaiLieu/PhanTich.md
 [Sơ đồ thực thể]: 
 [Cơ Sở Dữ Liệu]: 
