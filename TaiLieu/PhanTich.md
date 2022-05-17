@@ -9,12 +9,15 @@
 - Sinh Viên
 
 #### Quản lý nhà trường
-- Quản lý file: Giấy đăng kí học lại, bảo lưu, ...
-- Quản lý trang web: banner giới thiệu
-- Tạo tài khoản giảng viên và sinh viên (exel hoặc tự động)
-- Tạo list môn học cho từng ngành và từng khoa
-- Tạo thời gian đăng kí tín chỉ cho sinh viên
-- Tạo thời gian đăng kí lịch dạy cho giảng viên
+- Quản lý khóa học
+- Quản lý ngành học
+- Quản lý môn học
+- Quản lý giảng viên
+- Quản lý sinh viên
+- Quản lý điểm chuyên cần
+- Quản lý lịch thi
+- Quản lý lịch đăng kí tín chỉ
+- Quản lý điểm
 
 #### Giảng viên
 - Xem và chỉnh sửa thông tin cá nhân
