@@ -14,10 +14,11 @@
 - Quản lý môn học
 - Quản lý giảng viên
 - Quản lý sinh viên
-- Quản lý điểm chuyên cần
-- Quản lý lịch thi
+- Quản lý lịch dạy
 - Quản lý lịch đăng kí tín chỉ
+- Quản lý lịch thi
 - Quản lý điểm
+- Quản lý điểm chuyên cần
 
 #### Giảng viên
 - Xem và chỉnh sửa thông tin cá nhân
