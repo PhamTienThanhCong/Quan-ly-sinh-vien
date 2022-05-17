@@ -21,13 +21,12 @@
 - Quản lý điểm
 
 #### Giảng viên
-- Xem và chỉnh sửa thông tin cá nhân
-- Đăng ký lịch dạy
 - Xem lịch dạy
+- Điểm danh sinh viên
+- Xem lịch sử điểm danh
+- Nhập điểm sinh viên
 
 #### Sinh Viên
-- Xem và chỉnh sửa thông tin cá nhân
-- Xem chương trình đào tạo
 - Đăng kí lịch học
 - Xem lịch học
-- Đánh giá giảng viên
+- Xem điểm 
