@@ -25,6 +25,7 @@
 - Điểm danh sinh viên
 - Xem lịch sử điểm danh
 - Nhập điểm sinh viên
+- Xem điểm của sinh viên
 
 #### Sinh Viên
 - Đăng kí lịch học
