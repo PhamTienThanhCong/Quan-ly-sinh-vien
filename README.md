@@ -15,4 +15,4 @@
 
 [Mô Tả đồ án]: https://github.com/PhamTienThanhCong/Quan-ly-dao-tao/blob/master/TaiLieu/PhanTich.md
 [Sơ đồ thực thể]: https://drive.google.com/file/d/1U8VP_A4zuq00-m0ftY5kr5aKJtd0foMr/view?usp=sharing
-[Cơ Sở Dữ Liệu]: 
+[Cơ Sở Dữ Liệu]: gg
