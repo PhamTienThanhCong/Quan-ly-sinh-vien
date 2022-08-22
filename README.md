@@ -23,8 +23,10 @@
   - [Sơ đồ thực thể]
   - [Cơ Sở Dữ Liệu]
 
+- cách cài đặt laragon: https://www.youtube.com/watch?v=6mP3WTpXX5U
+- cách cài phpmyadmin: https://www.youtube.com/watch?v=9tqo3lb13rk
 - cách clone web về máy: https://www.youtube.com/watch?v=pA-bAHf--dM
-- link video demo: https://www.youtube.com/watch?v=JR4y3qP9oiI
+- link video demo: Chưa có :3
 
 
 
