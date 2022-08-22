@@ -16,7 +16,7 @@
 ## Về bài tập lớn
 - Công Nghệ sử dụng:
   - FrontEnd: HTML5, CSS, Javascript 6, bootstrap 5.
-  - BackEnd: PHP 8.
+  - BackEnd: PHP, laravel 9X
   - Database: MySQL.
 - Tài liệu
   - [Mô Tả đồ án]
