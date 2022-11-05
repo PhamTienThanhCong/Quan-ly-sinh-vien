@@ -59,7 +59,7 @@
                         </div>
                         <div class="social-login">
                            <span>Đăng nhập với</span>
-                           <a href="#" class="google"><i class="fab fa-google"></i></a>
+                           <a href="{{ route('google.redirect','google') }}" class="google"><i class="fab fa-google"></i></a>
                         </div>
                      </div>
                   </div>

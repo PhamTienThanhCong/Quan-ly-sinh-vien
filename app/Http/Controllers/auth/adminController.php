@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginAdminRequest;
+use App\Http\Requests\LoginRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,13 +12,17 @@ class adminController extends Controller
 {
     public function home()
     {
-        return Auth::guard('admin')->check();
+        return Auth::guard('admin')->user();
     }
 
     public function login(){
+        // save role to session
+        session(['role' => 'admin']);
         return view('auth.login', ['role' => 'admin']);
     }
-    public function loginProcess(LoginAdminRequest $request){
+    public function loginProcess(LoginRequest $request){
+        // remove role from session
+        $request->session()->forget('role');
         $email = $request->email;
         $password = $request->password;
 
@@ -47,6 +51,7 @@ class adminController extends Controller
     }
     public function forgotPassword(){
         return view('auth.forgot-password', ['role' => 'admin']);
+
     }
     public function forgotPasswordProcess(Request $request){
         // $email = $request->email;
