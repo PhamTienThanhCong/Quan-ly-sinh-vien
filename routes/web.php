@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\auth\adminController;
+use App\Http\Controllers\auth\studentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function(){
+//     return view('auth.login');
+// });
+// Auth login forgot password
+Route::get('/dang-nhap', [studentController::class, 'login'])->name('student.login');
+Route::post('/dang-nhap/xu-ly', [studentController::class, 'loginProcess'])->name('student.loginProcess');
+Route::get('/quen-mat-khau', [studentController::class, 'forgotPassword'])->name('student.forgotPassword');
+Route::post('/quen-mat-khau/xu-ly', [studentController::class, 'forgotPasswordProcess'])->name('student.forgotPasswordProcess');
+
+Route::get('quan-tri-vien/dang-nhap', [adminController::class, 'login'])->name('admin.login');
+Route::post('quan-tri-vien/dang-nhap/xu-ly', [adminController::class, 'loginProcess'])->name('admin.loginProcess');
+Route::get('quan-tri-vien/quen-mat-khau', [adminController::class, 'forgotPassword'])->name('admin.forgotPassword');
+Route::post('quan-tri-vien/quen-mat-khau/xu-ly', [adminController::class, 'forgotPasswordProcess'])->name('admin.forgotPasswordProcess');
+Route::get('quan-tri-vien/dang-xuat', [adminController::class, 'logout'])->name('admin.logout');
+
+Route::get('quan-tri-vien', [adminController::class, 'home'])->name('admin.home');
