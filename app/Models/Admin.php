@@ -10,6 +10,7 @@ class Admin extends Authenticatable
 {
     use HasFactory;
     protected $table = 'admins';
+    protected $primaryKey = 'id';
     protected $fillable = ['username', 'email', 'password', 'ma_khoa'];
     protected $hidden = ['password', 'remember_token'];
     protected $casts = ['email_verified_at' => 'datetime'];

@@ -9,6 +9,13 @@ class Khoa extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'ma_khoa',
+        'ten_khoa',
+    ];
+
     public $timestamps = false;
     public $incrementing = false;
+    protected $primaryKey = 'ma_khoa';
+
 }

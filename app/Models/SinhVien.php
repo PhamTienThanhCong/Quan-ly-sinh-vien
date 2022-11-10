@@ -10,6 +10,7 @@ class SinhVien extends Authenticatable
 {
     use HasFactory;
     protected $table = 'sinh_viens';
+    protected $primaryKey = 'ma_sinh_vien';
     protected $guard = 'user';
     protected $fillable = [
         'id',
@@ -18,6 +19,9 @@ class SinhVien extends Authenticatable
         'name',
         'phone',
         'address',
+        'ma_khoa',
+        'ma_lop',
+        'ma_chuyen_nganh',
         'avatar',
         'created_at',
         'updated_at',

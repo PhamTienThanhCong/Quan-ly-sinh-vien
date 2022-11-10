@@ -3,6 +3,7 @@
 use App\Http\Controllers\auth\adminController;
 use App\Http\Controllers\auth\SocialController;
 use App\Http\Controllers\auth\studentController;
+use App\Http\Controllers\KhoaControllller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +36,14 @@ Route::get('quan-tri-vien/dang-xuat', [adminController::class, 'logout'])->name(
 Route::get('/auth/redirect/{provider}', [SocialController::class, 'redirectToProvider'])->name('google.redirect');
 Route::get('/callback/{provider}', [SocialController::class, 'handleProviderCallback'])->name('google.callback');
 
-Route::get('quan-tri-vien', [adminController::class, 'home'])->name('admin.home');
+// Route quản trị viên (admin) using middleware CheckAdmin 
+Route::group(['prefix' => 'quan-tri-vien', 'middleware' => ['checkAdmin']], function(){
+    Route::get('/', [adminController::class, 'myAccount'])->name('admin.home');
+    Route::get('/thong-tin-ca-nhan', [adminController::class, 'myAccount'])->name('admin.profile');
+
+    Route::get('/khoa-khoa/quan-ly-khoa', [KhoaControllller::class, 'index'] )->name('admin.danh_sach_khoa');
+    Route::get('/khoa-khoa/quan-ly-khoa/them-khoa', [KhoaControllller::class, 'create'])->name('admin.them_khoa');
+    Route::post('/khoa-khoa/quan-ly-khoa/them-khoa/xu-ly', [KhoaControllller::class, 'store'])->name('admin.them_khoa_process');
+    Route::get('/khoa-khoa/quan-ly-khoa/sua-khoa/{id}', [KhoaControllller::class, 'edit'])->name('admin.sua_khoa');
+    Route::post('/khoa-khoa/quan-ly-khoa/sua-khoa/xu-ly/{ma_khoa}', [KhoaControllller::class, 'update'])->name('admin.sua_khoa_process');
+});

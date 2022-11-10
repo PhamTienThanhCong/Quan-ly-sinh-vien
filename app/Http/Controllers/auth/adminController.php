@@ -58,4 +58,9 @@ class adminController extends Controller
         // $role = $request->role;
         // return view('auth.forgot-password-process', ['email' => $email, 'role' => $role]);
     }
+    
+    public function myAccount(){
+        return view('admin.home', ['page' => 'Thông tin cá nhân']);
+    }
+
 }

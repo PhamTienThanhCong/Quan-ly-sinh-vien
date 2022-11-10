@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateDiemRequest extends FormRequest
+class editKhoaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateDiemRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class UpdateDiemRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'ten_khoa' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'ten_khoa.required' => 'Vui lòng nhập tên khoa'
         ];
     }
 }
