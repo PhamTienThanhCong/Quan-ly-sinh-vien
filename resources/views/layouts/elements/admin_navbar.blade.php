@@ -5,8 +5,8 @@
                 <li class="menu-title">
                     <span>Phần của giáo vụ</span>
                 </li>
-                <li>
-                    <a href="./thong_tin.html"><i class="fa-solid fa-user-pen"></i><span> Thông tin cá nhân</span></a>
+                <li class="{{ Request::routeIs('admin.home') ? 'active' : '' }}">
+                    <a href="{{ route('admin.home') }}"><i class="fa-solid fa-user-pen"></i><span> Thông tin cá nhân</span></a>
                 </li>
                 <li class="{{ request()->is('quan-tri-vien/khoa-khoa*') ? 'submenu active' : 'submenu' }}">
                     <!-- <i class="fa-regular fa-school-lock"></i> -->
@@ -16,7 +16,7 @@
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a class="{{ request()->is('quan-tri-vien/khoa-khoa/quan-ly-khoa*') ? 'active' : '' }}" href="{{ route('admin.danh_sach_khoa') }}">Quản lý về khoa</a></li>
-                        <li><a href="./nganh_hoc.html">Quản lý Ngành học</a></li>
+                        <li><a class="{{ Request::routeIs('admin.chuyen_nganh.*') ? 'active' : '' }}{{ Request::routeIs('admin.chuyen_nganh') ? 'active' : '' }}" href="{{ route('admin.chuyen_nganh') }}">Quản lý Ngành học</a></li>
                         <li><a href="./khoa_hoc.html">Quản lý khóa học</a></li>
                         <li><a href="./mon_hoc.html">Quản lý môn học</a></li>
                     </ul>

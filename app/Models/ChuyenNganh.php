@@ -11,4 +11,13 @@ class ChuyenNganh extends Model
 
     public $timestamps = false;
     public $incrementing = false;
+
+    protected $fillable = [
+        'ma_chuyen_nganh',
+        'ten_chuyen_nganh',
+        'ma_khoa',
+    ];
+
+
+    protected $primaryKey = 'ma_chuyen_nganh';
 }

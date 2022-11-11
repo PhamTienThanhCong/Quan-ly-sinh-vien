@@ -45,10 +45,10 @@ class KhoaControllller extends Controller
     public function store(createKhoaRequest $request)
     {
         $khoa = new Khoa();
-        $khoa->ma_khoa = $request->ma_khoa;
+        $khoa->ma_khoa = strtoupper($request->ma_khoa);
         $khoa->ten_khoa = $request->ten_khoa;
         $khoa->save();
-        return redirect()->route('admin.danh_sach_khoa')->with('message', 'Thêm Khoa mới thành công')->with('status', 'success');;
+        return redirect()->route('admin.danh_sach_khoa')->with('message', 'Thêm Khoa mới thành công')->with('status', 'success');
     }
 
     /**
