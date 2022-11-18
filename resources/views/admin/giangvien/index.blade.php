@@ -11,7 +11,7 @@
                 'paging': true,
                 'lengthChange': true,
                 'searching': true,
-                'ordering': true,
+                'ordering': false,
                 'autoWidth': false
             })
         })
@@ -46,8 +46,8 @@
                                             <th>Mã giảng viên</th>
                                             <th>Họ tên</th>
                                             <th>Email</th>
-                                            <th>Điện thoại</th>
                                             <th>Trình độ</th>
+                                            <th>Chuyên môn</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,7 +57,7 @@
                                                 <td>
                                                     {{ $giangvien['ma_khoa'] }}
                                                 </td>
-                                                <td>
+                                                <td class="text-left">
                                                     <h2 class="table-avatar">
                                                         <a href="{{ route('admin.giang_vien.show', $giangvien['ma_giang_vien']) }}" class="avatar avatar-sm mr-2">
                                                             <img class="avatar-img rounded-circle"
@@ -67,14 +67,14 @@
                                                         <a href="{{ route('admin.giang_vien.show', $giangvien['ma_giang_vien']) }}">{{ $giangvien['ho_ten'] }}</a>
                                                     </h2>
                                                 </td>
-                                                <td>
+                                                <td class="text-left">
                                                     {{ $giangvien['email'] }}
                                                 </td>
                                                 <td>
-                                                    {{ $giangvien['so_dien_thoai'] }}
+                                                    {{ $giangvien['hoc_van'] }}
                                                 </td>
                                                 <td>
-                                                    {{ $giangvien['trinhdo'] }}
+                                                    {{ $giangvien['chuyen_mon'] }}
                                                 </td>
                                             </tr>
                                         @endforeach

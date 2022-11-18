@@ -6,7 +6,7 @@
                     <span>Phần của giáo vụ</span>
                 </li>
                 <li class="{{ Request::routeIs('admin.home') ? 'active' : '' }}">
-                    <a href="{{ route('admin.home') }}"><i class="fa-solid fa-user-pen"></i><span> Thông tin cá nhân</span></a>
+                    <a href="{{ route('admin.home') }}"><i class="fa-solid fa-user-pen"></i><span> Tổng quan </span></a>
                 </li>
                 <li class="{{ request()->is('quan-tri-vien/khoa-khoa*') ? 'submenu active' : 'submenu' }}">
                     <!-- <i class="fa-regular fa-school-lock"></i> -->
@@ -19,13 +19,14 @@
                         <li><a class="{{ Request::routeIs('admin.chuyen_nganh.*') ? 'active' : '' }}{{ Request::routeIs('admin.chuyen_nganh') ? 'active' : '' }}" href="{{ route('admin.chuyen_nganh') }}">Quản lý Ngành học</a></li>
                     </ul>
                 </li>
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-user-graduate"></i> <span> Quản lý Sinh Viên</span> <span
+                <li class="{{ Request::routeIs('admin.sinh_vien.*') ? 'submenu active' : 'submenu' }}">
+                    <a class="{{ Request::routeIs('admin.sinh_vien.*') ? 'submenu active' : '' }}" href="#"><i class="fas fa-user-graduate"></i> <span> Quản lý Sinh Viên</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="./danh_sach_sv.html">Danh sách lớp học</a></li>
-                        <li><a href="./danh_sach_sv.html">Danh sách sinh viên</a></li>
-                        <li><a href="./sv_moi.html">Quản lý sinh viên mới</a></li>
+                        <li><a class="{{ Request::routeIs('admin.sinh_vien.khoa_moi.*') ? 'active' : '' }}{{ Request::routeIs('admin.sinh_vien.khoa_moi') ? 'active' : '' }}" href="{{ route('admin.sinh_vien.khoa_moi') }}">Danh sách sinh khóa mới viên</a></li>
+                        <li><a class="{{ Request::routeIs('admin.sinh_vien.khoa.*') ? 'active' : '' }}{{ Request::routeIs('admin.sinh_vien.khoa') ? 'active' : '' }}" href="{{ route('admin.sinh_vien.khoa',"new") }}">Danh sách sinh khóa mới viên</a></li>
+
+                        <li><a href="./sv_moi.html">Sinh viên đã tốt nghiệp</a></li>
                     </ul>
                 </li>
                 <li class="{{ Request::routeIs('admin.giang_vien.*') ? 'active' : '' }}">
@@ -49,7 +50,7 @@
                     <a href="#"><i class="fa-solid fa-pen-to-square"></i><span> Quản lý cơ sở vật chất</span>
                         <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="./co_so_vat_chat.html">Quản lý phòng học</a></li>
+                        <li><a href="">Quản lý phòng học</a></li>
                         <li><a href="./co_so_vat_chat.html">Quản lý giảng đường </a></li>
                         <li><a href="./co_so_vat_chat.html">Quản lý phòng thực hành</a></li>
                         <li><a href="./co_so_vat_chat.html">Quản lý phòng khác</a></li>

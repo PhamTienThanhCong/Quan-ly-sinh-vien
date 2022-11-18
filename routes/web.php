@@ -7,6 +7,7 @@ use App\Http\Controllers\ChuyenNganhController;
 use App\Http\Controllers\GiangVienController;
 use App\Http\Controllers\KhoaControllller;
 use App\Http\Controllers\KhoaHocController;
+use App\Http\Controllers\SinhVienController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,5 +65,9 @@ Route::group(['prefix' => 'quan-tri-vien', 'middleware' => ['checkAdmin']], func
     Route::get('/quan-ly-giang-vien/sua-giang-vien/{id}', [GiangVienController::class, 'edit'])->name('admin.giang_vien.edit');
     Route::post('/quan-ly-giang-vien/sua-giang-vien/xu-ly/{id}', [GiangVienController::class, 'update'])->name('admin.giang_vien.update');
     Route::get('/quan-ly-giang-vien/xoa-giang-vien/{id}', [GiangVienController::class, 'destroy'])->name('admin.giang_vien.destroy');
+
+    // sinh vien
+    Route::get('/quan-ly-sinh-vien/khoa-moi', [SinhVienController::class, 'index1'])->name('admin.sinh_vien.khoa_moi'); 
+    Route::get('/quan-ly-sinh-vien/sinh-vien-{khoa}', [SinhVienController::class, 'index'])->name('admin.sinh_vien.khoa'); 
 
 });
