@@ -46,7 +46,7 @@
           <div class="dropdown-menu">
              <div class="user-header">
                 <div class="avatar avatar-sm">
-                   <img src="{{ asset('/assets/img/profiles/avatar-01.jpg') }}" alt="User Image" class="avatar-img rounded-circle">
+                   <img src="{{ asset('/assets/img/profiles/avatar.jpg') }}" alt="User Image" class="avatar-img rounded-circle">
                 </div>
                 <div class="user-text">
                    <h6>{{ Auth::guard('admin')->user()->username }}</h6>

@@ -24,7 +24,7 @@
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a class="{{ Request::routeIs('admin.sinh_vien.khoa_moi.*') ? 'active' : '' }}{{ Request::routeIs('admin.sinh_vien.khoa_moi') ? 'active' : '' }}" href="{{ route('admin.sinh_vien.khoa_moi') }}">Danh sách sinh khóa mới viên</a></li>
-                        <li><a class="{{ Request::routeIs('admin.sinh_vien.khoa.*') ? 'active' : '' }}{{ Request::routeIs('admin.sinh_vien.khoa') ? 'active' : '' }}" href="{{ route('admin.sinh_vien.khoa',"new") }}">Danh sách sinh khóa mới viên</a></li>
+                        <li><a class="{{ Request::routeIs('admin.sinh_vien.khoa.*') ? 'active' : '' }}{{ Request::routeIs('admin.sinh_vien.khoa') ? 'active' : '' }}" href="{{ route('admin.sinh_vien.khoa',"all") }}">Danh sách sinh viên</a></li>
 
                         <li><a href="./sv_moi.html">Sinh viên đã tốt nghiệp</a></li>
                     </ul>

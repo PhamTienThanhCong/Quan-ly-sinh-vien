@@ -15,8 +15,6 @@ class SinhVienController extends Controller
      */
     public function index1()
     {
-        // page
-        $page = "Danh sách sinh viên khóa mới";
         // get khoa_hocs limit 1 ordering 
         $khoa_hoc = KhoaHoc::select('*')->orderBy('nam_bat_dau', 'desc')->first();
         // get current year
@@ -36,6 +34,9 @@ class SinhVienController extends Controller
             $check_tao_sinh_vien = false;
         }
 
+        // page
+        $page = "Danh sách sinh viên khóa mới ($khoa_hoc->ma_khoa_hoc)";
+    
         // get sinh_viens by sv_khoa = khoa_hoc->ma_khoa_hoc
         $sinh_viens = SinhVien::select("*")->where('sv_khoa', $khoa_hoc->ma_khoa_hoc)->get();
         // count sinh vien have ma_lop = null and sv_khoa = khoa_hoc->ma_khoa_hoc
@@ -52,7 +53,15 @@ class SinhVienController extends Controller
     }
 
     public function index($khoa){
-        
+        // get sinh vien 
+        $sinh_viens = SinhVien::select("*")->where('status', 1);
+        $page = "Danh sách sinh viên khóa toàn khóa";
+        if ($khoa !== 'all') {
+            $page = "Danh sách sinh viên";
+            $sinh_viens->where('sv_khoa', $khoa);
+        }
+        $sinh_viens = $sinh_viens->get();
+        return view('admin.sinhvien.all_sv', compact('page', 'sinh_viens'));
     }   
 
     /**
