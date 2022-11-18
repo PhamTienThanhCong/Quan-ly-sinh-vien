@@ -17,21 +17,22 @@
                     <ul>
                         <li><a class="{{ request()->is('quan-tri-vien/khoa-khoa/quan-ly-khoa*') ? 'active' : '' }}" href="{{ route('admin.danh_sach_khoa') }}">Quản lý về khoa</a></li>
                         <li><a class="{{ Request::routeIs('admin.chuyen_nganh.*') ? 'active' : '' }}{{ Request::routeIs('admin.chuyen_nganh') ? 'active' : '' }}" href="{{ route('admin.chuyen_nganh') }}">Quản lý Ngành học</a></li>
-                        <li><a href="./khoa_hoc.html">Quản lý khóa học</a></li>
-                        <li><a href="./mon_hoc.html">Quản lý môn học</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fas fa-user-graduate"></i> <span> Quản lý Sinh Viên</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
+                        <li><a href="./danh_sach_sv.html">Danh sách lớp học</a></li>
                         <li><a href="./danh_sach_sv.html">Danh sách sinh viên</a></li>
                         <li><a href="./sv_moi.html">Quản lý sinh viên mới</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="./giang_vien.html"><i class="fa fa-chalkboard-user"></i><span> Quản lý giảng
-                            viên</span></a>
+                <li class="{{ Request::routeIs('admin.giang_vien.*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.giang_vien.index") }}">
+                        <i class="fa fa-chalkboard-user"></i>
+                        <span> Quản lý giảng viên</span>
+                    </a>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fa-solid fa-pen-to-square"></i><span> Quản lý Học vụ</span> <span
@@ -55,7 +56,7 @@
                     </ul>
                 </li>
 
-                <li>
+                <li >
                     <a href="./lien_he.html"><i class="fa-solid fa-envelope-circle-check"></i> <span> Công tác liên
                             hệ</span></a>
                 </li>
