@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\KhoaHoc;
 use App\Models\SinhVien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SinhVienController extends Controller
@@ -75,16 +77,27 @@ class SinhVienController extends Controller
         //
     }
 
+    public function setInputEncoding($file) {
+        $fileContent = file_get_contents($file->path());
+        $enc = mb_detect_encoding($fileContent, mb_list_encodings(), true);
+    
+        Config::set('excel.imports.csv.input_encoding', $enc);
+    }
+
     public function importCSV(Request $request)
     {
-        // read file csv
-        $file = $request->file('file');
-        $file_name = $file->getClientOriginalName();
-        $file->move('public/uploads', $file_name);
-        $file_path = public_path('uploads/' . $file_name);
-        
-        
-        // dd($data);
+        try {
+            $inputs = $request->all();
+            setInputEncoding($inputs['file']);
+            $file = $inputs['file'];
+            dd($file);
+
+            // return redirect()->back()->with('success', 'Upload File Thành Công');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+
+            return redirect()->back()->with('failures', $failures);
+        }
     }
 
     /**

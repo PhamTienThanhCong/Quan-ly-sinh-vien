@@ -122,7 +122,7 @@ return [
         |
         */
         'csv'         => [
-            'delimiter'        => null,
+            'delimiter'        => ',',
             'enclosure'        => '"',
             'escape_character' => '\\',
             'contiguous'       => false,
