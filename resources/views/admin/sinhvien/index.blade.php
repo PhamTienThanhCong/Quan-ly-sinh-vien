@@ -15,7 +15,7 @@
                 'autoWidth': false
             })
         })
-        @if ($check_tao_khoa_hoc )
+        @if ($check_tao_khoa_hoc)
             swal("Ôi khôngggg", "Đã đến kì học mới admin hãy tạo mới ngay", "warning");
         @endif
     </script>
@@ -33,32 +33,45 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12">
-                        <p class="mt-3">Số lượng sinh viên khóa {{ $khoa_hoc->ma_khoa_hoc }} có: {{ count($sinh_viens) }} sinh viên</p>
+                        <p class="mt-3">Số lượng sinh viên khóa {{ $khoa_hoc->ma_khoa_hoc }} có: {{ count($sinh_viens) }}
+                            sinh viên</p>
                         <p>
                             Số lượng sinh viên chưa được chia lớp là: {{ $count_sinh_vien }} sinh viên.
                             @if ($count_sinh_vien > 0)
                                 <a href="#" class="text-danger"> Chia lớp ngay</a>
                             @endif
                         </p>
-                        @if( !$check_tao_sinh_vien )
+                        @if (!$check_tao_sinh_vien)
                             <p class="text-danger">
                                 Hết hạn thời gian thêm sinh viên mới
                             </p>
                         @endif
-                        @if ($check_tao_khoa_hoc )
+                        @if ($check_tao_khoa_hoc)
                             <p class="text-danger">
-                                Đã bắt đầu 1 kì học mới admin hãy 
-                                <a href="">
-                                    <button type="button" class="btn btn-danger">thêm kì học mới ngay <span class="spinner-border spinner-border-sm mr-2" role="status"></span></button>
+                                Đã bắt đầu 1 kì học mới admin hãy
+                                <a href="#">
+                                    <button type="button" class="btn btn-danger">thêm kì học mới ngay <span
+                                            class="spinner-border spinner-border-sm mr-2" role="status"></span></button>
                                 </a>
                             </p>
+                            {{-- import csv --}}
                         @endif
                     </div>
                     <div class="col-auto text-right float-right ml-auto">
                         <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
-                        @if( $check_tao_sinh_vien )
-                        <a href="{{ route('admin.giang_vien.create') }}" class="btn btn-primary"><i
-                                class="fas fa-plus"></i></a>
+                        <form action="{{ route('admin.sinh_vien.import_csv') }}" method="POST"
+                            enctype="multipart/form-data" style="display: inline-block">
+                            @csrf
+                            <div class="form-group">
+                                <label for="file">Import file csv</label>
+                                <input type="file" class="form-control-file hidden" name="file" id="file"
+                                    placeholder="" aria-describedby="fileHelpId">
+                                <small id="fileHelpId" class="form-text text-muted">Chỉ chấp nhận file csv</small>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Import csv</button>
+                        </form>
+                        @if ($check_tao_sinh_vien)
+                            <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                         @endif
                     </div>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KhoaHoc;
 use App\Models\SinhVien;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SinhVienController extends Controller
 {
@@ -31,7 +32,7 @@ class SinhVienController extends Controller
         if ($current_month > 7 && $current_month <= 10){
             $check_tao_sinh_vien = true;
         }else{
-            $check_tao_sinh_vien = false;
+            $check_tao_sinh_vien = true;
         }
 
         // page
@@ -72,6 +73,18 @@ class SinhVienController extends Controller
     public function create()
     {
         //
+    }
+
+    public function importCSV(Request $request)
+    {
+        // read file csv
+        $file = $request->file('file');
+        $file_name = $file->getClientOriginalName();
+        $file->move('public/uploads', $file_name);
+        $file_path = public_path('uploads/' . $file_name);
+        
+        
+        // dd($data);
     }
 
     /**
