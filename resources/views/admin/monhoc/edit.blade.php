@@ -17,9 +17,6 @@
                     <div class="col">
                         <h3 class="page-title">{{ $page }}</h3>
                     </div>
-                    <div class="col-auto text-right float-right ml-auto">
-                        <a href="{{ route('admin.upload.index', 'khoas') }}" class="btn btn-outline-primary mr-2"><i class="fas fa-plus"></i> Thêm bằng excel</a>
-                    </div>
                 </div>
             </div>
 
@@ -34,7 +31,7 @@
                                     @endforeach
                                 </ul>
                             @endif
-                            <form action="{{ route('admin.them_khoa_process') }}" method="POST">
+                            <form action="{{ route('admin.sua_khoa_process', $khoa->ma_khoa) }}" method="POST">
                                 <div class="row">
                                     <div class="col-12">
                                         <h5 class="form-title"><span>Thông tin về khoa</span></h5>
@@ -43,20 +40,20 @@
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
                                             <label>Mã Khoa</label>
-                                            <input value="{{ old('ma_khoa') }}" name="ma_khoa" type="text" class="form-control">
+                                            <input value="{{ $khoa->ma_khoa }}" type="text" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
                                             <label>Tên Chi tết</label>
-                                            <input value="{{ old('ten_khoa') }}" name="ten_khoa" type="text" class="form-control">
+                                            <input value="{{ $khoa->ten_khoa }}" name="ten_khoa" type="text" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <a href="{{ route('admin.danh_sach_khoa') }}">
                                             <button type="button" class="btn btn-light">Trở về</button>
                                         </a>
-                                        <button type="submit" class="btn btn-primary">Tạo khoa</button>
+                                        <button type="submit" class="btn btn-primary">Sửa Khoa</button>
                                     </div>
                                 </div>
                             </form>

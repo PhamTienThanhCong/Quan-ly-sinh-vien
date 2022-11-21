@@ -7,7 +7,10 @@ use App\Http\Controllers\ChuyenNganhController;
 use App\Http\Controllers\GiangVienController;
 use App\Http\Controllers\KhoaControllller;
 use App\Http\Controllers\KhoaHocController;
+use App\Http\Controllers\MonHocController;
 use App\Http\Controllers\SinhVienController;
+use App\Http\Controllers\UpdateFileController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,5 +75,25 @@ Route::group(['prefix' => 'quan-tri-vien', 'middleware' => ['checkAdmin']], func
 
     // import csv
     Route::post('/quan-ly-sinh-vien/import-csv', [SinhVienController::class, 'importCSV'])->name('admin.sinh_vien.import_csv');
+
+
+    // Quản lý môn học
+    Route::get('/quan-ly-mon-hoc/index', [MonHocController::class, 'index'])->name('admin.mon_hoc.index');
+    Route::get('/quan-ly-mon-hoc/them-mon-hoc', [MonHocController::class, 'create'])->name('admin.mon_hoc.create');
+    Route::post('/quan-ly-mon-hoc/them-mon-hoc/xu-ly', [MonHocController::class, 'store'])->name('admin.mon_hoc.store');
+    
+    // update file
+    Route::get('/file/update/{table}', [UpdateFileController::class, 'index'])->name('admin.upload.index');
+    Route::post('/file/update/{table}', [UpdateFileController::class, 'upload'])->name('admin.upload.update');
+    
+    
+});
+
+// route clear cache, config, route, view
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('view:clear');
+    $exitCode = Artisan::call('route:cache');
+    $exitCode = Artisan::call('config:cache');
 
 });

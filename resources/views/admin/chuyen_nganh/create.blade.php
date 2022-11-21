@@ -17,6 +17,9 @@
                     <div class="col">
                         <h3 class="page-title">{{ $page }}</h3>
                     </div>
+                    <div class="col-auto text-right float-right ml-auto">
+                        <a href="{{ route('admin.upload.index', 'chuyen_nganhs') }}" class="btn btn-outline-primary mr-2"><i class="fas fa-plus"></i> Thêm bằng excel</a>
+                    </div>
                 </div>
             </div>
 

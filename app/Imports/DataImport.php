@@ -5,7 +5,7 @@ namespace App\Imports;
 use App\Models\SinhVien;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class SinhVienImport implements ToModel
+class DataImport implements ToModel
 {
     /**
     * @param array $row

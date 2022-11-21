@@ -35,8 +35,18 @@
                         <span> Quản lý giảng viên</span>
                     </a>
                 </li>
+
+                <li class="{{ Request::routeIs('admin.mon_hoc.*') ? 'submenu active' : 'submenu' }}">
+                    <a {{ Request::routeIs('admin.mon_hoc.*') ? 'submenu active' : '' }} href="#"><i class="fa-solid fa-pen-to-square"></i><span> Quản lý môn học</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a class="{{ Request::routeIs('admin.mon_hoc.index') ? 'active' : '' }}" href="{{ route('admin.mon_hoc.index') }}">Danh sách môn học</a></li>
+                        <li><a class="{{ Request::routeIs('admin.mon_hoc.create') ? 'active' : '' }}" href="{{ route('admin.mon_hoc.create') }}">Thêm môn học</a></li>
+                    </ul>
+                </li>
+
                 <li class="submenu">
-                    <a href="#"><i class="fa-solid fa-pen-to-square"></i><span> Quản lý Học vụ</span> <span
+                    <a href="#"><i class="fa-solid fa-pen-to-square"></i><span> Quản lý Học tập</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="./lich_dang_ki_tin_chi.html">Quản lý lịch đăng kí tín chỉ</a></li>
