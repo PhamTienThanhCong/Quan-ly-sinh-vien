@@ -59,19 +59,8 @@
                     </div>
                     <div class="col-auto text-right float-right ml-auto">
                         <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
-                        <form action="{{ route('admin.sinh_vien.import_csv') }}" method="POST"
-                            enctype="multipart/form-data" style="display: inline-block">
-                            @csrf
-                            <div class="form-group">
-                                <label for="file">Import file csv</label>
-                                <input type="file" class="form-control-file hidden" name="file" id="file"
-                                    placeholder="" aria-describedby="fileHelpId">
-                                <small id="fileHelpId" class="form-text text-muted">Chỉ chấp nhận file csv</small>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Import csv</button>
-                        </form>
                         @if ($check_tao_sinh_vien)
-                            <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                            <a href="{{ route('admin.sinh_vien.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                         @endif
                     </div>
                 </div>
@@ -123,7 +112,7 @@
                                                     @if ($sinh_vien['ma_lop'] == null)
                                                         Chưa chia
                                                     @else
-                                                        $sinh_vien['ma_lop']
+                                                        {{ $sinh_vien['ma_lop'] }}
                                                     @endif
                                                 </td>
                                                 <td>

@@ -17,6 +17,9 @@
                     <div class="col">
                         <h3 class="page-title">{{ $page }}</h3>
                     </div>
+                    <div class="col-auto text-right float-right ml-auto">
+                        <a href="{{ route('admin.upload.index', 'sinh_viens') }}" class="btn btn-outline-primary mr-2"><i class="fas fa-plus"></i> Thêm bằng excel</a>
+                    </div>
                 </div>
             </div>
 
@@ -31,11 +34,11 @@
                                     @endforeach
                                 </ul>
                             @endif
-                            <form method="POST" action="{{ route('admin.giang_vien.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('admin.sinh_vien.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
-                                        <h5 class="form-title"><span>Thông tin cá nhân của giảng viên</span></h5>
+                                        <h5 class="form-title"><span>Thông tin cá nhân của sinh viên</span></h5>
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
@@ -55,7 +58,7 @@
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
                                             <label>Sinh Ngày</label>
-                                            <input name="sinh_nhat" type="date" class="form-control" required>
+                                            <input name="ngay_sinh" type="date" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
@@ -65,13 +68,14 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <label>Nhập địa chỉ email</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="email" name="email"
-                                                aria-label="Recipient's username" aria-describedby="basic-addon2" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" id="basic-addon2">@dremschool.edu.com</span>
-                                            </div>
+                                        <div class="form-group">
+                                            <label>Chuyên ngành</label>
+                                            <select name="chuyen_nganh" class="form-control" required>
+                                                <option disabled selected>-- Lựa chọn chuyên ngành --</option>
+                                                @foreach ($chuyen_nganhs as $chuyen_nganh)
+                                                    <option value="{{ $chuyen_nganh->ma_chuyen_nganh }},{{ $chuyen_nganh->ma_khoa }}">{{ $chuyen_nganh->ten_chuyen_nganh }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
@@ -87,51 +91,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <h5 class="form-title"><span>Thông tin chuyên môn</span></h5>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <div class="form-group">
-                                            <label>Mã giảng viên</label>
-                                            <input type="text" name="ma_giang_vien" placeholder="mã giảng viên" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <div class="form-group">
-                                            <label>Khoa</label>
-                                            <select name="ma_khoa" class="form-control" required>
-                                                <option disabled selected>-- Lựa chọn khoa --</option>
-                                                @foreach ($khoas as $khoa)
-                                                    <option value="{{ $khoa->ma_khoa }}">{{ $khoa->ten_khoa }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <div class="form-group">
-                                            <label>Học Vấn</label>
-                                            <select name="hoc_van" class="form-control">
-                                                <option>-- Lựa chọn trình độ --</option>
-                                                <option value="Thạc Sĩ">Thạc Sĩ</option>
-                                                <option value="Tiến Sĩ">Tiến Sĩ</option>
-                                                <option value="Phó giáo sư">Phó giáo sư</option>
-                                                <option value="Giáo sư">Giáo sư</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <div class="form-group">
-                                            <label>Chuyên môn</label>
-                                            <input type="text" name="chuyen_mon" placeholder="Nhập Chuyên môn" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-12">
-                                        <div class="form-group">
-                                            <label>Ghi chú</label>
-                                            <textarea name="ghi_chu" rows="5" cols="5" class="form-control" placeholder="Ghi chú thêm thông tin về giảng viên"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-primary">Thêm giảng viên</button>
+                                        <button type="submit" class="btn btn-primary">Thêm sinh viên</button>
                                         <a href="{{ route("admin.giang_vien.index") }}">
                                             <button type="button" class="btn btn-light">
                                                 Trở lại

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChuyenNganh;
 use App\Models\KhoaHoc;
+use App\Models\Lop;
 use App\Models\SinhVien;
 use Illuminate\Http\Request;
 
@@ -71,7 +73,13 @@ class SinhVienController extends Controller
      */
     public function create()
     {
-        //
+        // create sinh vien
+        $page = "Thêm sinh viên";
+        $khoa_hoc = KhoaHoc::select('*')->orderBy('nam_bat_dau', 'desc')->first();
+        // khoa and chuyen_nganh
+        $chuyen_nganhs = ChuyenNganh::select('*')->get();
+
+        return view('admin.sinhvien.create', compact('page', 'khoa_hoc', 'chuyen_nganhs'));
     }
 
     /**
@@ -82,7 +90,35 @@ class SinhVienController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // get last sinh vien
+        $last_sinh_vien = SinhVien::select('*')->orderBy('ma_sinh_vien', 'desc')->first();
+        // string to int 
+        $last_sinh_vien->ma_sinh_vien = (int) $last_sinh_vien->ma_sinh_vien + 1;
+        // $last_sinh_vien++;
+        // get current khoa hoc
+        $khoa_hoc = KhoaHoc::select('*')->orderBy('nam_bat_dau', 'desc')->first();
+        // split by ,
+        $arr = explode(',', $request->chuyen_nganh);
+        $ma_chuyen_nganh = $arr[0];
+        $ma_khoa = $arr[1];
+
+        $sinh_vien = new SinhVien();
+        $sinh_vien->ma_sinh_vien = $last_sinh_vien->ma_sinh_vien;
+        $sinh_vien->ho_ten = $request->ho_ten;
+        $sinh_vien->ngay_sinh = $request->ngay_sinh;
+        $sinh_vien->gioi_tinh = $request->gioi_tinh;
+        $sinh_vien->email = $sinh_vien->ma_sinh_vien . "@st.phenikaa-uni.edu.vn";
+        $sinh_vien->so_dien_thoai = $request->so_dien_thoai;
+        $sinh_vien->dia_chi = $request->dia_chi;
+        $sinh_vien->ma_chuyen_nganh = $ma_chuyen_nganh;
+        $sinh_vien->ma_khoa = $ma_khoa;
+        $sinh_vien->sv_khoa = $khoa_hoc->ma_khoa_hoc;
+        // password
+        $sinh_vien->password = bcrypt($sinh_vien->ma_sinh_vien);
+
+        $sinh_vien->save();
+
+        return redirect()->route('admin.sinh_vien.khoa_moi')->with('message', 'Thêm sinh viên thành công')->with('status', 'success');
     }
 
     /**

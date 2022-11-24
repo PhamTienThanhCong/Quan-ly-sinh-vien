@@ -17,6 +17,9 @@
                     <div class="col">
                         <h3 class="page-title">Thêm môn học</h3>
                     </div>
+                    <div class="col-auto text-right float-right ml-auto">
+                        <a href="{{ route('admin.upload.index', 'mon_hocs') }}" class="btn btn-outline-primary mr-2"><i class="fas fa-plus"></i> Thêm bằng excel</a>
+                    </div>
                 </div>
             </div>
 

@@ -56,17 +56,6 @@
                     </ul>
                 </li>
 
-                <li class="submenu">
-                    <a href="#"><i class="fa-solid fa-pen-to-square"></i><span> Quản lý cơ sở vật chất</span>
-                        <span class="menu-arrow"></span></a>
-                    <ul>
-                        <li><a href="">Quản lý phòng học</a></li>
-                        <li><a href="./co_so_vat_chat.html">Quản lý giảng đường </a></li>
-                        <li><a href="./co_so_vat_chat.html">Quản lý phòng thực hành</a></li>
-                        <li><a href="./co_so_vat_chat.html">Quản lý phòng khác</a></li>
-                    </ul>
-                </li>
-
                 <li >
                     <a href="./lien_he.html"><i class="fa-solid fa-envelope-circle-check"></i> <span> Công tác liên
                             hệ</span></a>

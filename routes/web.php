@@ -72,7 +72,9 @@ Route::group(['prefix' => 'quan-tri-vien', 'middleware' => ['checkAdmin']], func
     // sinh vien
     Route::get('/quan-ly-sinh-vien/khoa-moi', [SinhVienController::class, 'index1'])->name('admin.sinh_vien.khoa_moi'); 
     Route::get('/quan-ly-sinh-vien/sinh-vien-{khoa}', [SinhVienController::class, 'index'])->name('admin.sinh_vien.khoa'); 
-
+    Route::get('/quan-ly-sinh-vien/them-sinh-vien', [SinhVienController::class, 'create'])->name('admin.sinh_vien.create');
+    Route::post('/quan-ly-sinh-vien/them-sinh-vien/xu-ly', [SinhVienController::class, 'store'])->name('admin.sinh_vien.store');
+    
     // import csv
     Route::post('/quan-ly-sinh-vien/import-csv', [SinhVienController::class, 'importCSV'])->name('admin.sinh_vien.import_csv');
 

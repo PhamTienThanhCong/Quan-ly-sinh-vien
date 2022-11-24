@@ -86,7 +86,7 @@
                                                     @if ($sinh_vien['ma_lop'] == null)
                                                         Chưa chia
                                                     @else
-                                                        $sinh_vien['ma_lop']
+                                                        {{ $sinh_vien['ma_lop'] }}
                                                     @endif
                                                 </td>
                                                 <td>
