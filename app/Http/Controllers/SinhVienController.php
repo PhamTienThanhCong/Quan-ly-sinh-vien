@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChuyenNganh;
+use App\Models\Khoa;
 use App\Models\KhoaHoc;
 use App\Models\Lop;
 use App\Models\SinhVien;
@@ -54,16 +55,54 @@ class SinhVienController extends Controller
 
     }
 
-    public function index($khoa){
+    public function index(Request $request){
         // get sinh vien 
-        $sinh_viens = SinhVien::select("*")->where('status', 1);
-        $page = "Danh sách sinh viên khóa toàn khóa";
-        if ($khoa !== 'all') {
-            $page = "Danh sách sinh viên";
-            $sinh_viens->where('sv_khoa', $khoa);
+        $sinh_viens = SinhVien::select("*")->where('status', 1); 
+        $sv_khoas = KhoaHoc::select("*")->get();
+        $khoas = Khoa::select('*')->get();
+        $chuyen_nganhs = [];
+        $lops = [];
+        $page = "Danh sách sinh viên";
+        
+        $khoa = "";
+        $nganh = "";
+        $lop = "";
+        $sv_khoa = "";
+
+        if ($request->has('sv_khoa') && $request->sv_khoa != "") {
+            $sv_khoa = $request->sv_khoa;
+            $sinh_viens = $sinh_viens->where('sv_khoa', $sv_khoa);
         }
-        $sinh_viens = $sinh_viens->get();
-        return view('admin.sinhvien.all_sv', compact('page', 'sinh_viens'));
+
+        if ($request->has('khoa') && $request->khoa != "") {
+            $khoa = $request->khoa;
+            $sinh_viens = $sinh_viens->where('ma_khoa', $khoa);
+            $chuyen_nganhs = ChuyenNganh::select('*')->where('ma_khoa', $khoa)->get();
+        }
+        if ($request->has('nganh') && $request->nganh != "") {
+            $nganh = $request->nganh;
+            $sinh_viens = $sinh_viens->where('ma_chuyen_nganh', $nganh);
+            $lops = SinhVien::select('ma_lop')->where('ma_chuyen_nganh', $nganh)->where('status', 1)->groupBy('ma_lop')->get();
+        }
+        if ($request->has('lop') && $request->lop != "") {
+            $lop = $request->lop;
+            $sinh_viens = $sinh_viens->where('ma_lop', $lop);
+        }
+        $count_sv = $sinh_viens->count();
+        $sinh_viens = $sinh_viens->limit(1000)->get();
+        return view('admin.sinhvien.all_sv', compact(
+            'page', 
+            'sinh_viens', 
+            'count_sv',
+            'khoas', 
+            'chuyen_nganhs', 
+            'lops', 
+            'khoa', 
+            'nganh', 
+            'sv_khoas',
+            'sv_khoa',
+            'lop'
+        ));
     }   
 
     /**
