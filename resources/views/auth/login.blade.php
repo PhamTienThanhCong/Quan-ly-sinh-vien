@@ -43,7 +43,11 @@
                            @csrf
                            
                            <div class="form-group">
-                              <input class="form-control" value="{{ session('email') }}" name="email" type="email" placeholder="Email" required>
+                              @if ($role == 'admin')
+                                 <input class="form-control" value="{{ session('email') }}" name="email" type="email" placeholder="Email" required>
+                              @else
+                                 <input class="form-control" type="text" name="username" placeholder="Nhập MSSV hoặc Email">
+                              @endif
                            </div>
                            <div class="form-group">
                               <input class="form-control" name="password" type="password" placeholder="Password" required>

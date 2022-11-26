@@ -46,7 +46,7 @@ return [
         ],
         'student' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'users',
         ],
     ],
 

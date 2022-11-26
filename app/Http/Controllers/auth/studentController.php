@@ -19,18 +19,19 @@ class studentController extends Controller
         // delete role from session
         $request->session()->forget('role');
         // login process by auth
-        $email = $request->email;
+        $email = $request->username;
+
+        // split email to username 
+        $username = explode('@st', $email)[0];
         $password = $request->password;
 
-        $admin = SinhVien::where('email', $email)->first();
-
+        $admin = SinhVien::where('ma_sinh_vien', $email)->first();
         if($admin){
             // check password
             if(password_verify($password, $admin->password)){
                 // save admin to auth session
                 Auth::guard('student')->login($admin);
-                // return redirect()->route('student.home');
-                return Auth::guard('student')->user();
+                return redirect()->route('student.home');
             }else{
                 // password wrong
                 // save email to session 
@@ -55,5 +56,10 @@ class studentController extends Controller
         // $email = $request->email;
         // $role = $request->role;
         // return view('auth.forgot-password-process', ['email' => $email, 'role' => $role]);
+    }
+
+    public function home(){
+        $page = 'Thông tin cá nhân';
+        return view('student.view_student', ['page' => $page]);
     }
 }
