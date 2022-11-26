@@ -8,6 +8,7 @@ use App\Models\KhoaHoc;
 use App\Models\Lop;
 use App\Models\SinhVien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SinhVienController extends Controller
 {
@@ -135,7 +136,7 @@ class SinhVienController extends Controller
         $last_sinh_vien->ma_sinh_vien = (int) $last_sinh_vien->ma_sinh_vien + 1;
         // $last_sinh_vien++;
         // get current khoa hoc
-        $khoa_hoc = KhoaHoc::select('*')->orderBy('nam_bat_dau', 'desc')->first();
+        $khoa_hoc = KhoaHoc::select('*')->orderBy('nam_bat_dau', 'desc')->limit(5)->get();
         // split by ,
         $arr = explode(',', $request->chuyen_nganh);
         $ma_chuyen_nganh = $arr[0];
@@ -168,7 +169,23 @@ class SinhVienController extends Controller
      */
     public function show($id)
     {
-        //
+        // get sinh vien
+        $sinh_vien = SinhVien::select('sinh_viens.*', DB::raw('khoa_hocs.nam_bat_dau as nam_bat_dau'))
+            ->join('khoa_hocs', 'sinh_viens.sv_khoa', '=', 'khoa_hocs.ma_khoa_hoc')
+            ->where('sinh_viens.ma_sinh_vien', $id)
+            ->first();
+        $get_chuyen_nganh = ChuyenNganh::select('chuyen_nganhs.*', DB::raw('khoas.ten_khoa'))
+            ->join('khoas', 'chuyen_nganhs.ma_khoa', '=', 'khoas.ma_khoa')
+            ->where('chuyen_nganhs.ma_chuyen_nganh', $sinh_vien->ma_chuyen_nganh)
+            ->first();
+
+        $page = "Thông tin sinh viên " . $sinh_vien->ho_ten;
+
+        return view('admin.sinhvien.show', compact(
+            'page', 
+            'sinh_vien',
+            'get_chuyen_nganh'
+        ));
     }
 
     /**

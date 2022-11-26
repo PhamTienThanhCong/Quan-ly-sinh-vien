@@ -17,6 +17,16 @@
             })
         })
     </script>
+    <script>
+        // if count($sinh_viens) == 0 swal error
+        if ({{ count($sinh_viens) }} == 0) {
+            swal({
+                icon: 'error',
+                title: 'Lỗi tìm kiếm !',
+                text: 'Không có sinh viên nào phù hợp với điều kiện !',
+            })
+        }
+    </script>
 @endsection
 
 @section('content')
@@ -65,28 +75,32 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-md-2">Lọc theo ngành</label>
-                                        <div class="col-md-10">
-                                            <select class="form-control" name="nganh">
-                                                <option value="">-- Chọn ngành --</option>
-                                                @foreach ($chuyen_nganhs as $data)
-                                                    <option value="{{ $data->ma_chuyen_nganh }}" {{ $data->ma_chuyen_nganh == $nganh ? 'selected' : '' }}>{{ $data->ten_chuyen_nganh }}</option>
-                                                @endforeach
-                                            </select>
+                                    @if (count($chuyen_nganhs))
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-md-2">Lọc theo ngành</label>
+                                            <div class="col-md-10">
+                                                <select class="form-control" name="nganh">
+                                                    <option value="">-- Chọn ngành --</option>
+                                                    @foreach ($chuyen_nganhs as $data)
+                                                        <option value="{{ $data->ma_chuyen_nganh }}" {{ $data->ma_chuyen_nganh == $nganh ? 'selected' : '' }}>{{ $data->ten_chuyen_nganh }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-md-2">Lọc theo lớp</label>
-                                        <div class="col-md-10">
-                                            <select class="form-control" name="lop">
-                                                <option value="">-- Chọn lớp --</option>
-                                                @foreach ($lops as $data)
-                                                    <option value="{{ $data->ma_lop }}" {{ $data->ma_lop == $lop ? 'selected' : '' }}>{{ $data->ma_lop }}</option>
-                                                @endforeach
-                                            </select>
+                                    @endif
+                                    @if (count($lops))
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-md-2">Lọc theo lớp</label>
+                                            <div class="col-md-10">
+                                                <select class="form-control" name="lop">
+                                                    <option value="">-- Chọn lớp --</option>
+                                                    @foreach ($lops as $data)
+                                                        <option value="{{ $data->ma_lop }}" {{ $data->ma_lop == $lop ? 'selected' : '' }}>{{ $data->ma_lop }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                     <div class="text-right">
                                         <a href="{{ route('admin.sinh_vien.khoa') }}" class="btn btn-danger">Clear</a>
                                         <button type="submit" class="btn btn-info">Tìm kiếm</button>
@@ -128,12 +142,12 @@
                                                 </td>
                                                 <td class="text-left">
                                                     <h2 class="table-avatar">
-                                                        <a href="" class="avatar avatar-sm mr-2">
+                                                        <a href="{{ route("admin.sinh_vien.show", $sinh_vien->ma_sinh_vien) }}" class="avatar avatar-sm mr-2">
                                                             <img class="avatar-img rounded-circle"
                                                                 src="{{ asset('assets/img/profiles') }}/{{ $sinh_vien['avatar'] }}"
                                                                 alt="User Image">
                                                         </a>
-                                                        <a href="">{{ $sinh_vien['ho_ten'] }}</a>
+                                                        <a href="{{ route("admin.sinh_vien.show", $sinh_vien->ma_sinh_vien) }}">{{ $sinh_vien['ho_ten'] }}</a>
                                                     </h2>
                                                 </td>
                                                 <td>
