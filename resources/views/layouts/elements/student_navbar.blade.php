@@ -6,8 +6,8 @@
                <span>Phần của sinh viên</span>
             </li>
 
-            <li>
-               <a href="./thong_tin.html"><i class="fa-solid fa-user-pen"></i><span> Thông tin cá nhân</span></a>
+            <li class="{{ Request::routeIs('student.info.*') ? 'active' : '' }}">
+               <a href="{{ route('student.info.index') }}"><i class="fa-solid fa-user-pen"></i><span> Thông tin cá nhân</span></a>
             </li>
 
             <li>

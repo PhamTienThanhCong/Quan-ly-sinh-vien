@@ -12,5 +12,7 @@
     Route::get('/dang-xuat', [studentController::class, 'logout'])->name('student.logout');
 
     Route::group(['middleware' => 'checkStudent'], function(){
-        Route::get('/', [studentController::class, 'home'])->name('student.home');
+        Route::get('/', [studentController::class, 'home'])->name('student.info.index');
+        Route::get('/sua-thong-tin', [studentController::class, 'edit'])->name('student.info.edit');
+        Route::post('/sua-thong-tin/xu-ly', [studentController::class, 'editProcess'])->name('student.info.editProcess');
     });

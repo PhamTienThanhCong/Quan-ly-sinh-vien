@@ -66,11 +66,20 @@ class GiangVienController extends Controller
         // check upload file name avatar
         if ($request->hasFile('avatar')) {
             $file = $request->file('avatar');
+            $extension = $file->getClientOriginalExtension();
+            if($extension != 'jpg' && $extension != 'png' && $extension != 'jpeg'){
+                return redirect()->back()->with('error', 'File ảnh không đúng định dạng');
+            }
             $name = $file->getClientOriginalName();
-            $avatar = $giangvien->ma_giang_vien ."". $name;
+            $avatar = $giangvien->ma_giang_vien .".". $extension;
             
             // file move to public/assets/img/profiles
-            $file->move('assets/img/profiles', $avatar);
+            $file->move('assets/img/profiles/AvatarGiangVien', $avatar);
+
+            // remove old avatar
+            if ($giangvien->avatar != "avatar.jpg") {
+                unlink('assets/img/profiles/AvatarGiangVien/' . $giangvien->avatar);
+            }
 
             $giangvien->avatar = $avatar;
         } else {
@@ -142,7 +151,7 @@ class GiangVienController extends Controller
             $avatar = $giangvien->ma_giang_vien ."". $name;
             
             // file move to public/assets/img/profiles
-            $file->move('assets/img/profiles', $avatar);
+            $file->move('assets/img/profiles/AvatarGiangVien', $avatar);
 
             $giangvien->avatar = $avatar;
         }

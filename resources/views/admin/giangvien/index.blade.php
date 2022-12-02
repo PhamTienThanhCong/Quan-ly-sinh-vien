@@ -61,7 +61,7 @@
                                                     <h2 class="table-avatar">
                                                         <a href="{{ route('admin.giang_vien.show', $giangvien['ma_giang_vien']) }}" class="avatar avatar-sm mr-2">
                                                             <img class="avatar-img rounded-circle"
-                                                                src="{{ asset('assets/img/profiles') }}/{{ $giangvien['avatar'] }}"
+                                                                src="{{ asset('assets/img/profiles/AvatarGiangVien') }}/{{ $giangvien['avatar'] }}"
                                                                 alt="User Image">
                                                         </a>
                                                         <a href="{{ route('admin.giang_vien.show', $giangvien['ma_giang_vien']) }}">{{ $giangvien['ho_ten'] }}</a>

@@ -3463,3 +3463,8 @@ table.table-inbox tbody tr.checked {
 		height: 355px;
 	}
 }
+
+.img-object-fit {
+	object-fit: cover;
+	object-position: center;
+}

@@ -26,7 +26,7 @@
                                 <h4>Thông tin</h4>
                                 <div class="media mt-3">
                                     {{-- img --}}
-                                    <img src="{{ asset('assets/img/profiles') }}/{{ $giangvien['avatar'] }}" class="mr-3" alt="...">
+                                    <img src="{{ asset('assets/img/profiles/AvatarGiangVien') }}/{{ $giangvien['avatar'] }}" class="mr-3" alt="...">
                                     <div class="media-body">
                                         <ul>
                                             <li>
