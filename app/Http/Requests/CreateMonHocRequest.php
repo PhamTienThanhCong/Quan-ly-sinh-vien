@@ -28,6 +28,7 @@ class CreateMonHocRequest extends FormRequest
             'ten_mon_hoc' => 'required',
             'so_tin_chi' => 'required',
             'ma_khoa' => 'required',
+            'ki_hoc' => 'required',
         ];
     }
     public function messages()
@@ -38,6 +39,7 @@ class CreateMonHocRequest extends FormRequest
             'ten_mon_hoc.required' => 'Tên môn học không được để trống',
             'so_tin_chi.required' => 'Số tín chỉ không được để trống',
             'ma_khoa.required' => 'Khoa không được để trống',
+            'ki_hoc.required' => 'Kì học không được để trống',
         ];
     }
 }

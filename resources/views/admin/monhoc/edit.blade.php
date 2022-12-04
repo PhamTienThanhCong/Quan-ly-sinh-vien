@@ -9,13 +9,16 @@
 @endsection
 
 @section('content')
-    <div class="page-wrapper" style="min-height: 387px;">
+    <div class="page-wrapper" style="min-height: 657px;">
         <div class="content container-fluid">
 
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="page-title">{{ $page }}</h3>
+                    </div>
+                    <div class="col-auto text-right float-right ml-auto">
+                        <a href="{{ route('admin.mon_hoc.destroy', $mon_hoc->ma_mon_hoc) }}" class="btn btn-outline-danger mr-2">Xóa môn học</a>
                     </div>
                 </div>
             </div>
@@ -24,36 +27,69 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            @if (count($errors) >0)
+                            @if (count($errors) > 0)
                                 <ul>
-                                    @foreach($errors->all() as $error)
+                                    @foreach ($errors->all() as $error)
                                         <li class="text-danger"> {{ $error }}</li>
                                     @endforeach
                                 </ul>
                             @endif
-                            <form action="{{ route('admin.sua_khoa_process', $khoa->ma_khoa) }}" method="POST">
+                            <form method="POST" action="{{ route("admin.mon_hoc.update", $mon_hoc->ma_mon_hoc) }}">
                                 <div class="row">
-                                    <div class="col-12">
-                                        <h5 class="form-title"><span>Thông tin về khoa</span></h5>
-                                    </div>
                                     @csrf
+                                    <div class="col-12">
+                                        <h5 class="form-title"><span>Thông tin môn học</span></h5>
+                                    </div>
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
-                                            <label>Mã Khoa</label>
-                                            <input value="{{ $khoa->ma_khoa }}" type="text" class="form-control" readonly>
+                                            <label>Mã môn học</label>
+                                            <input name="ma_mon_hoc" value="{{ $mon_hoc->ma_mon_hoc }}" type="text" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
-                                            <label>Tên Chi tết</label>
-                                            <input value="{{ $khoa->ten_khoa }}" name="ten_khoa" type="text" class="form-control" required>
+                                            <label>Tên môn học</label>
+                                            <input name="ten_mon_hoc" value="{{ $mon_hoc->ten_mon_hoc }}" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Số Tín chỉ</label>
+                                            <input name="so_tin_chi" value="{{ $mon_hoc->so_tin_chi }}" type="number" value="3" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Thuộc khoa</label>
+                                            <select name="ma_khoa" class="form-control">
+                                                <option value="1">Môn học chung</option>
+                                                @foreach ($khoas as $khoa)
+                                                    <option 
+                                                        value="{{ $khoa->ma_khoa }}"
+                                                        {{ $mon_hoc->ma_khoa == $khoa->ma_khoa ? 'selected' : '' }}
+                                                        >Khoa {{ $khoa['ten_khoa'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Học kì</label>
+                                            <select name="ki_hoc" class="form-control">
+                                                @for ($i = 1; $i <= 10; $i++)
+                                                    <option value="{{ $i }}">Học kì {{ $i }}</option>
+                                                @endfor
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <a href="{{ route('admin.danh_sach_khoa') }}">
-                                            <button type="button" class="btn btn-light">Trở về</button>
+                                        <button type="submit" class="btn btn-primary">Sửa môn học</button>
+                                        <a href="{{ route("admin.mon_hoc.index") }}">
+                                            <button type="button" class="btn btn-light">
+                                                Trở lại
+                                            </button>
                                         </a>
-                                        <button type="submit" class="btn btn-primary">Sửa Khoa</button>
                                     </div>
                                 </div>
                             </form>

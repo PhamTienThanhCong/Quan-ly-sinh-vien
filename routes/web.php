@@ -5,6 +5,7 @@ use App\Http\Controllers\auth\SocialController;
 use App\Http\Controllers\ChuyenNganhController;
 use App\Http\Controllers\GiangVienController;
 use App\Http\Controllers\KhoaControllller;
+use App\Http\Controllers\KiHocController;
 use App\Http\Controllers\MonHocController;
 use App\Http\Controllers\SinhVienController;
 use App\Http\Controllers\UpdateFileController;
@@ -70,10 +71,19 @@ Route::group(['prefix' => 'quan-tri-vien', 'middleware' => ['checkAdmin']], func
 
 
     // Quản lý môn học
-    Route::get('/quan-ly-mon-hoc/index', [MonHocController::class, 'index'])->name('admin.mon_hoc.index');
+    Route::get('/quan-ly-mon-hoc/danh-sach-mon-hoc', [MonHocController::class, 'index'])->name('admin.mon_hoc.index');
     Route::get('/quan-ly-mon-hoc/them-mon-hoc', [MonHocController::class, 'create'])->name('admin.mon_hoc.create');
     Route::post('/quan-ly-mon-hoc/them-mon-hoc/xu-ly', [MonHocController::class, 'store'])->name('admin.mon_hoc.store');
+    Route::get('/quan-ly-mon-hoc/sua-mon-hoc/{id}', [MonHocController::class, 'edit'])->name('admin.mon_hoc.edit');
+    Route::post('/quan-ly-mon-hoc/sua-mon-hoc/xu-ly/{id}', [MonHocController::class, 'update'])->name('admin.mon_hoc.update');
+    Route::get('/quan-ly-mon-hoc/xoa-mon-hoc/{id}', [MonHocController::class, 'destroy'])->name('admin.mon_hoc.destroy');
     
+    // quản lý kì học
+    Route::get('/quan-ly-ki-hoc/tong-quan', [KiHocController::class, 'index'])->name('admin.ki_hoc.index');
+    Route::get('/quan-ly-ki-hoc/them-ki-hoc', [KiHocController::class, 'create'])->name('admin.ki_hoc.create');
+
+    
+
     // update file
     Route::get('/file/update/{table}', [UpdateFileController::class, 'index'])->name('admin.upload.index');
     Route::post('/file/update/{table}', [UpdateFileController::class, 'upload'])->name('admin.upload.update');

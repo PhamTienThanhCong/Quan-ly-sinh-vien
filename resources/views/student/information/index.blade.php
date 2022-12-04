@@ -106,6 +106,9 @@
                                 <a href="{{ route('student.info.edit') }}">
                                     <button type="button" class="btn btn-info">Sửa thông tin sinh viên</button>
                                 </a>
+                                <a href="{{ route('student.info.changePassword') }}">
+                                    <button type="button" class="btn btn-danger">Đổi mật khẩu</button>
+                                </a>
                             </div>
                         </div>
                     </div>

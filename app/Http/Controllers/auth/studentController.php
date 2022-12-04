@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\changePasswordRequest;
 use App\Http\Requests\editInfo;
 use App\Http\Requests\LoginRequest;
 use App\Models\ChuyenNganh;
@@ -111,5 +112,24 @@ class studentController extends Controller
         }
         $sinh_vien->save();
         return redirect()->route('student.info.index')->with('message', 'Sửa thông tin thành công')->with('status', 'success');
+    }
+
+    public function changePassword(){
+        $page = 'Đổi mật khẩu';
+        return view('student.information.changePassword', ['page' => $page]);
+    }
+
+    public function changePasswordProcess(changePasswordRequest $request){
+        $ma_sinh_vien = Auth::guard('student')->user()->ma_sinh_vien;
+        $sinh_vien = SinhVien::where('ma_sinh_vien', $ma_sinh_vien)->first();
+        // check old password
+        if(password_verify($request->oldPassword, $sinh_vien->password)){
+            // check new password and confirm password
+            $sinh_vien->password = bcrypt($request->newPassword);
+            $sinh_vien->save();
+            return redirect()->route('student.info.index')->with('message', 'Đổi mật khẩu thành công')->with('status', 'success');
+        }else{
+            return redirect()->back()->with('error', 'Mật khẩu cũ không đúng');
+        }
     }
 }

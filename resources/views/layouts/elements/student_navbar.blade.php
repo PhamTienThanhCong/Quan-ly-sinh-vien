@@ -10,8 +10,8 @@
                <a href="{{ route('student.info.index') }}"><i class="fa-solid fa-user-pen"></i><span> Thông tin cá nhân</span></a>
             </li>
 
-            <li>
-               <a href="./chuong_trinh_hoc.html"><i class="fa-solid fa-rectangle-list"></i><span> Xem chương trình học</span></a>
+            <li class="{{ Request::routeIs('student.viewSubject') ? 'active' : '' }}">
+               <a href="{{ route('student.viewSubject') }}"><i class="fa-solid fa-rectangle-list"></i><span> Xem chương trình học</span></a>
             </li>
 
             <li class="submenu">

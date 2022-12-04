@@ -69,6 +69,16 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Học kì</label>
+                                            <select name="ki_hoc" class="form-control">
+                                                @for ($i = 1; $i <= 10; $i++)
+                                                    <option value="{{ $i }}">Học kì {{ $i }}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                         <a href="{{ route("admin.mon_hoc.index") }}">

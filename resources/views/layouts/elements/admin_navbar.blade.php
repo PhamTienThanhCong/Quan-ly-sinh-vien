@@ -37,7 +37,7 @@
                 </li>
 
                 <li class="{{ Request::routeIs('admin.mon_hoc.*') ? 'submenu active' : 'submenu' }}">
-                    <a {{ Request::routeIs('admin.mon_hoc.*') ? 'submenu active' : '' }} href="#"><i class="fa-solid fa-pen-to-square"></i><span> Quản lý môn học</span> <span
+                    <a href="#"><i class="fa-solid fa-pen-to-square"></i><span> Quản lý môn học</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a class="{{ Request::routeIs('admin.mon_hoc.index') ? 'active' : '' }}" href="{{ route('admin.mon_hoc.index') }}">Danh sách môn học</a></li>
@@ -45,11 +45,11 @@
                     </ul>
                 </li>
 
-                <li class="submenu">
+                <li class="{{ Request::routeIs('admin.ki_hoc.*') ? 'submenu active' : 'submenu' }}">
                     <a href="#"><i class="fa-solid fa-pen-to-square"></i><span> Quản lý Học tập</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="./lich_dang_ki_tin_chi.html">Quản lý lịch đăng kí tín chỉ</a></li>
+                        <li><a class="{{ Request::routeIs('admin.ki_hoc.*') ? 'active' : '' }}" href="{{ route("admin.ki_hoc.index") }}">Quản lý lịch đăng kí tín chỉ</a></li>
                         <li><a href="./lich_day.html">Quản lý lịch dạy </a></li>
                         <li><a href="./lich_thi.html">Quản lý lịch thi</a></li>
                         <li><a href="./diem.html">Quản lý điểm</a></li>
