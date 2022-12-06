@@ -81,8 +81,11 @@ Route::group(['prefix' => 'quan-tri-vien', 'middleware' => ['checkAdmin']], func
     // quản lý kì học
     Route::get('/quan-ly-ki-hoc/tong-quan', [KiHocController::class, 'index'])->name('admin.ki_hoc.index');
     Route::get('/quan-ly-ki-hoc/them-ki-hoc', [KiHocController::class, 'create'])->name('admin.ki_hoc.create');
+    Route::post('/quan-ly-ki-hoc/them-lop-hoc-tu-dong/{id}', [KiHocController::class, 'add_class'])->name('admin.ki_hoc.add_class');
+    // Route::get('/quan-ly-ki-hoc/quan-ly-lop-dang-ki', [KiHocController::class, 'view_class'])->name('admin.ki_hoc.view_class');
+    Route::get('/quan-ly-ki-hoc/quan-ly-lop/{id}', [KiHocController::class, 'view_class'])->name('admin.ki_hoc.view_class.detail');
 
-    
+    Route::get("/chat-app",  [KiHocController::class, 'chat'])->name('admin.chat');
 
     // update file
     Route::get('/file/update/{table}', [UpdateFileController::class, 'index'])->name('admin.upload.index');

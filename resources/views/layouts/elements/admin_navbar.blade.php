@@ -50,15 +50,17 @@
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a class="{{ Request::routeIs('admin.ki_hoc.*') ? 'active' : '' }}" href="{{ route("admin.ki_hoc.index") }}">Quản lý lịch đăng kí tín chỉ</a></li>
-                        <li><a href="./lich_day.html">Quản lý lịch dạy </a></li>
-                        <li><a href="./lich_thi.html">Quản lý lịch thi</a></li>
-                        <li><a href="./diem.html">Quản lý điểm</a></li>
+                        {{-- <li><a href="./lich_day.html">Quản lý lịch dạy </a></li>
+                        <li><a href="./lich_thi.html">Quản lý lịch thi</a></li> --}}
+                        {{-- <li><a href="{{ route('admin.ki_hoc.view_class') }}">Quản lý điểm</a></li> --}}
                     </ul>
                 </li>
 
-                <li >
-                    <a href="./lien_he.html"><i class="fa-solid fa-envelope-circle-check"></i> <span> Công tác liên
-                            hệ</span></a>
+                <li  class="{{ Request::routeIs('admin.chat') ? 'active' : '' }}">
+                    <a href="{{ route('admin.chat') }}">
+                        <i class="fa-solid fa-envelope-circle-check"></i> 
+                        <span> Công tác liên hệ</span>
+                    </a>
                 </li>
 
             </ul>

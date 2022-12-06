@@ -56,7 +56,7 @@
                </div>
             </div>
             <a class="dropdown-item" href="{{ route("student.info.index") }}">Thông tin cá nhân</a>
-            <a class="dropdown-item" href="#">Liên lạc</a>
+            <a class="dropdown-item" href="{{ route('student.chat') }}">Liên lạc</a>
             <a class="dropdown-item" href="{{ route('student.logout') }}">Logout</a>
          </div>
       </li>

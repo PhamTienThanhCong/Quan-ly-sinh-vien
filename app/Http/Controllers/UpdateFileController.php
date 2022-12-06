@@ -148,14 +148,17 @@ class UpdateFileController extends Controller
         }else{
             $sinhVien->gioi_tinh = 0;
         }
-        $sinhVien->ngay_sinh = date ("Y-m-d", strtotime($data[3]));
+        // $birth_day = str_replace("2002", "2003", $data[3]); 
+
+        // $sinhVien->ngay_sinh = date ("Y-m-d", strtotime($birth_day));
+        $sinhVien->ngay_sinh = date ("Y-m-d", strtotime( $data[3]));
         $sinhVien->dia_chi = $data[4];
         $sinhVien->email = $data[0] . "@st.dremschool.edu.com";
         $sinhVien->password = bcrypt($data[0]);
-        $sinhVien->ma_lop = $data[5];
-        $sinhVien->ma_chuyen_nganh = $data[6];
-        $sinhVien->ma_khoa = $data[7];
-        $sinhVien->sv_khoa = "K14";
+        $sinhVien->sv_khoa = $data[5];
+        $sinhVien->ma_lop = $data[6];
+        $sinhVien->ma_chuyen_nganh = $data[7];
+        $sinhVien->ma_khoa = $data[8];
         $sinhVien->save();
         return "Đã Thêm";
     }

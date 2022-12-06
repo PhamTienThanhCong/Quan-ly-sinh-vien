@@ -54,7 +54,7 @@
                 </div>
              </div>
              <!-- <a class="dropdown-item" href="profile.html">My Profile</a> -->
-             <a class="dropdown-item" href="#">Liên lạc</a>
+             <a class="dropdown-item" href="{{ route('admin.chat') }}">Liên lạc</a>
              <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
           </div>
        </li>

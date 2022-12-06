@@ -19,4 +19,11 @@ use App\Http\Controllers\HomeController;
         Route::post('/doi-mat-khau/xu-ly', [studentController::class, 'changePasswordProcess'])->name('student.info.changePasswordProcess');
     
         Route::get('xem-chuong-trinh-hoc', [HomeController::class, 'viewSubject'])->name('student.viewSubject');
+        Route::get("/chat-app",  [HomeController::class, 'chat'])->name('student.chat');
+
+        Route::get("/dang-ki-hoc",  [HomeController::class, 'subjectRegister'])->name('student.subjectRegister');
+        
+        Route::get("/dang-ki-hoc/dang-ki/{id}",  [HomeController::class, 'subjectRegisterProcess'])->name('student.subjectRegisterProcess');
+        Route::get("/dang-ki-hoc/huy-dang-ki/{id}",  [HomeController::class, 'subjectRegisterCancel'])->name('student.subjectRegisterCancel');
+
     });
