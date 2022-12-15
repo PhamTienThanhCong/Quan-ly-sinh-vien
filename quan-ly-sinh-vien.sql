@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 06, 2022 lúc 07:59 PM
+-- Thời gian đã tạo: Th12 15, 2022 lúc 07:46 AM
 -- Phiên bản máy phục vụ: 5.7.33
 -- Phiên bản PHP: 7.4.19
 
@@ -43,7 +43,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `email`, `username`, `password`, `ma_khoa`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'congphamtienthanh@gmail.com', 'Đinh Thu Mai', '$2y$10$ZWaligOqB9mG53OkhI8DQuD51XthSvF2U5evISY8WncFMEAufOhuy', 'CNTT', NULL, '2022-11-05 05:03:30', '2022-11-05 05:03:30');
+(1, 'congphamtienthanh@gmail.com', 'Đinh Thu Mai', '$2y$10$nvxpEFY1nM/nJvzi9aidUuejJ7RSwUz5H9fg8MukVEUjEIPou78bi', 'CNTT', NULL, '2022-11-05 05:03:30', '2022-11-05 05:03:30');
 
 -- --------------------------------------------------------
 
@@ -3571,7 +3571,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT cho bảng `dang_ki_hocs`
 --
 ALTER TABLE `dang_ki_hocs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `diems`
@@ -3589,7 +3589,7 @@ ALTER TABLE `ket_qua_hoc_taps`
 -- AUTO_INCREMENT cho bảng `ky_hocs`
 --
 ALTER TABLE `ky_hocs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `lop_hocs`

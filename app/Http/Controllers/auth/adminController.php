@@ -20,14 +20,13 @@ class adminController extends Controller
         session(['role' => 'admin']);
         return view('auth.login', ['role' => 'admin']);
     }
-    public function loginProcess(LoginRequest $request){
+    public function loginProcess(Request $request){
         // remove role from session
         $request->session()->forget('role');
         $email = $request->email;
         $password = $request->password;
 
         $admin = Admin::where('email', $email)->first();
-
         if($admin){
             // check password
             if(password_verify($password, $admin->password)){
