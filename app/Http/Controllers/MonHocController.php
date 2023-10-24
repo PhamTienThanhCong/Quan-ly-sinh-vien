@@ -10,11 +10,7 @@ use Illuminate\Http\Request;
 
 class MonHocController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
         $page = "Danh sách tất cả môn học";
@@ -51,11 +47,7 @@ class MonHocController extends Controller
         return view('admin.monhoc.index', compact('page', 'mon_hocs', 'khoas', 'search_khoa'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $page = "Thêm môn học";
@@ -64,12 +56,7 @@ class MonHocController extends Controller
         return view('admin.monhoc.create', compact('page', 'khoas'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(CreateMonHocRequest $request)
     {
         $mon_hoc = new MonHoc();
@@ -85,40 +72,19 @@ class MonHocController extends Controller
         return redirect()->route('admin.mon_hoc.index')->with('message', 'Thêm môn học thành công')->with('status', 'success');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function edit($id)
     {
         $page = "Sửa môn học";
         // get mon_hoc
-        $mon_hoc = MonHoc::find($id);
+        $mon_hoc = MonHoc::find($id); // lấy ra môn học có mã là $id
         // get all khoa
         $khoas = Khoa::select('*')->get();
         return view('admin.monhoc.edit', compact('page', 'mon_hoc', 'khoas'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $mon_hoc = MonHoc::find($id);
@@ -135,12 +101,7 @@ class MonHocController extends Controller
         return redirect()->route('admin.mon_hoc.index')->with('message', "Sửa môn học " . $id . " thành công")->with('status', 'success');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $mon_hoc = MonHoc::find($id);
