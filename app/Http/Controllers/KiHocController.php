@@ -82,7 +82,7 @@ class KiHocController extends Controller
         // get ky_hocs by id
         $ky = KyHoc::find($id); 
         // get all khoas in ky_hoc
-        $khoas = explode(',', $ky->khoas);
+        $khoas = explode(',', $ky->khoas); 
 
         // $khoas = DB::table('khoas')->select('khoas.ma_khoa', DB::raw("count(sinh_viens.ma_sinh_vien) as so_luong_sv"))
         //     ->leftJoin('sinh_viens', 'khoas.ma_khoa', '=', 'sinh_viens.ma_khoa')
