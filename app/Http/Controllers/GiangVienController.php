@@ -6,13 +6,10 @@ use App\Models\GiangVien;
 use App\Models\Khoa;
 use Illuminate\Http\Request;
 
+// mien
 class GiangVienController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         // get all giangviens
@@ -21,11 +18,6 @@ class GiangVienController extends Controller
         return view('admin.giangvien.index', compact('giangviens', 'page'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $page = "Thêm mới giảng viên";
@@ -33,12 +25,6 @@ class GiangVienController extends Controller
         return view('admin.giangvien.create', compact('page', 'khoas'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
@@ -70,7 +56,6 @@ class GiangVienController extends Controller
             if($extension != 'jpg' && $extension != 'png' && $extension != 'jpeg'){
                 return redirect()->back()->with('error', 'File ảnh không đúng định dạng');
             }
-            $name = $file->getClientOriginalName();
             $avatar = $giangvien->ma_giang_vien .".". $extension;
             
             // file move to public/assets/img/profiles
@@ -95,12 +80,6 @@ class GiangVienController extends Controller
         return redirect()->route('admin.giang_vien.index')->with('message', 'Thêm mới giảng viên thành công')->with('status', 'success');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         // get giangvien by id
@@ -109,12 +88,6 @@ class GiangVienController extends Controller
         return view('admin.giangvien.show', compact('giangvien', 'page'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $page = "Cập nhật giảng viên";
@@ -123,13 +96,6 @@ class GiangVienController extends Controller
         return view('admin.giangvien.edit', compact('page', 'giangvien', 'khoas'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
 
@@ -164,12 +130,6 @@ class GiangVienController extends Controller
         return redirect()->route('admin.giang_vien.show', $id)->with('message', 'Cập nhật giảng viên thành công')->with('status', 'success');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $giangvien = GiangVien::find($id);

@@ -9,10 +9,12 @@ use App\Models\MonHoc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+// mô hình mvc 
+// m : modal , v : view , controller : các file xử lý 
 class HomeController extends Controller
 {
     // view subject
+    // miên
     public function viewSubject()
     {
         $page = "Danh sách chương trình học";
@@ -29,6 +31,7 @@ class HomeController extends Controller
         return view('student.chat', compact('page'));
     }
     
+    // cong
     public function subjectRegister(Request $request){
         $page = "Đăng kí môn học";
 
