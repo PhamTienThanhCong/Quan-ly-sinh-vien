@@ -50,14 +50,7 @@ Route::group(['prefix' => 'quan-tri-vien', 'middleware' => ['checkAdmin']], func
     Route::get('/khoa-khoa/quan-ly-chuyen-nganh/sua-chuyen-nganh/{id}', [ChuyenNganhController::class, 'edit'])->name('admin.chuyen_nganh.sua');
     Route::post('/khoa-khoa/quan-ly-chuyen-nganh/sua-chuyen-nganh/xu-ly/{ma_chuyen_nganh}', [ChuyenNganhController::class, 'update'])->name('admin.chuyen_nganh.sua_process');
 
-    // giang vien
-    Route::get('/quan-ly-giang-vien', [GiangVienController::class, 'index'])->name('admin.giang_vien.index');
-    Route::get('/quan-ly-giang-vien/them-giang-vien', [GiangVienController::class, 'create'])->name('admin.giang_vien.create');
-    Route::post('/quan-ly-giang-vien/them-giang-vien/xu-ly', [GiangVienController::class, 'store'])->name('admin.giang_vien.store');
-    Route::get('/quan-ly-giang-vien/chi-tiet-giang-vien/{id}', [GiangVienController::class, 'show'])->name('admin.giang_vien.show');
-    Route::get('/quan-ly-giang-vien/sua-giang-vien/{id}', [GiangVienController::class, 'edit'])->name('admin.giang_vien.edit');
-    Route::post('/quan-ly-giang-vien/sua-giang-vien/xu-ly/{id}', [GiangVienController::class, 'update'])->name('admin.giang_vien.update');
-    Route::get('/quan-ly-giang-vien/xoa-giang-vien/{id}', [GiangVienController::class, 'destroy'])->name('admin.giang_vien.destroy');
+    a
 
     // sinh vien
     Route::get('/quan-ly-sinh-vien/khoa-moi', [SinhVienController::class, 'index1'])->name('admin.sinh_vien.khoa_moi'); 
