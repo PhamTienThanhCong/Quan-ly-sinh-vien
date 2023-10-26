@@ -12,7 +12,7 @@ class ChuyenNganh extends Model
     public $timestamps = false;
     public $incrementing = false;
 
-    protected $fillable = [
+    protected $fillable = [ // bảng chuyên ngành
         'ma_chuyen_nganh',
         'ten_chuyen_nganh',
         'ma_khoa',

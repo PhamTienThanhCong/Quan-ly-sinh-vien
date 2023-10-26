@@ -15,7 +15,7 @@
                 'autoWidth': false
             })
         })
-        let number = {{ count($mon_hocs) }}
+        let number =  count($mon_hocs) 
         if (number == 0) {
             $('#my-table').hide()
             swal({
