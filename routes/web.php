@@ -38,17 +38,7 @@ Route::group(['prefix' => 'quan-tri-vien', 'middleware' => ['checkAdmin']], func
     Route::get('/', [adminController::class, 'myAccount'])->name('admin.home');
     Route::get('/thong-tin-ca-nhan', [adminController::class, 'myAccount'])->name('admin.profile');
 
-    Route::get('/khoa-khoa/quan-ly-khoa', [KhoaControllller::class, 'index'] )->name('admin.danh_sach_khoa');
-    Route::get('/khoa-khoa/quan-ly-khoa/them-khoa', [KhoaControllller::class, 'create'])->name('admin.them_khoa');
-    Route::post('/khoa-khoa/quan-ly-khoa/them-khoa/xu-ly', [KhoaControllller::class, 'store'])->name('admin.them_khoa_process');
-    Route::get('/khoa-khoa/quan-ly-khoa/sua-khoa/{id}', [KhoaControllller::class, 'edit'])->name('admin.sua_khoa');
-    Route::post('/khoa-khoa/quan-ly-khoa/sua-khoa/xu-ly/{ma_khoa}', [KhoaControllller::class, 'update'])->name('admin.sua_khoa_process');
 
-    Route::get('/khoa-khoa/quan-ly-chuyen-nganh', [ChuyenNganhController::class, 'index'])->name('admin.chuyen_nganh');
-    Route::get('/khoa-khoa/quan-ly-chuyen-nganh/them-chuyen-nganh', [ChuyenNganhController::class, 'create'])->name('admin.chuyen_nganh.them');
-    Route::post('/khoa-khoa/quan-ly-chuyen-nganh/them-chuyen-nganh/xu-ly', [ChuyenNganhController::class, 'store'])->name('admin.chuyen_nganh.them_process');
-    Route::get('/khoa-khoa/quan-ly-chuyen-nganh/sua-chuyen-nganh/{id}', [ChuyenNganhController::class, 'edit'])->name('admin.chuyen_nganh.sua');
-    Route::post('/khoa-khoa/quan-ly-chuyen-nganh/sua-chuyen-nganh/xu-ly/{ma_chuyen_nganh}', [ChuyenNganhController::class, 'update'])->name('admin.chuyen_nganh.sua_process');
 
     // giang vien
     Route::get('/quan-ly-giang-vien', [GiangVienController::class, 'index'])->name('admin.giang_vien.index');
