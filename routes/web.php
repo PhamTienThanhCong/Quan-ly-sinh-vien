@@ -3,7 +3,7 @@
 use App\Http\Controllers\auth\adminController;
 use App\Http\Controllers\auth\SocialController;
 use App\Http\Controllers\ChuyenNganhController;
-use App\Http\Controllers\GiangVienController;
+a
 use App\Http\Controllers\KhoaControllller;
 use App\Http\Controllers\KiHocController;
 use App\Http\Controllers\MonHocController;
