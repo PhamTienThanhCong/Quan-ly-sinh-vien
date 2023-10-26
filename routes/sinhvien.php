@@ -12,14 +12,7 @@ use App\Http\Controllers\HomeController;
     Route::get('/dang-xuat', [studentController::class, 'logout'])->name('student.logout');
 
     Route::group(['middleware' => 'checkStudent'], function(){
-        // miên
-        Route::get('/', [studentController::class, 'home'])->name('student.info.index');
-        //  đuôi không có process thì chỉ là giao diện thôi
-        Route::get('/sua-thong-tin', [studentController::class, 'edit'])->name('student.info.edit');
-        Route::post('/sua-thong-tin/xu-ly', [studentController::class, 'editProcess'])->name('student.info.editProcess');
-        Route::get('/doi-mat-khau', [studentController::class, 'changePassword'])->name('student.info.changePassword');
-        Route::post('/doi-mat-khau/xu-ly', [studentController::class, 'changePasswordProcess'])->name('student.info.changePasswordProcess');
-        //
+      a
         Route::get('xem-chuong-trinh-hoc', [HomeController::class, 'viewSubject'])->name('student.viewSubject');
         Route::get("/chat-app",  [HomeController::class, 'chat'])->name('student.chat');
 
