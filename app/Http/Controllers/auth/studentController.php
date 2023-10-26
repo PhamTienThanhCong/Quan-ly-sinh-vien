@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\changePasswordRequest;
+a
 use App\Http\Requests\editInfo;
 use App\Http\Requests\LoginRequest;
-use App\Models\ChuyenNganh;
-use App\Models\SinhVien;
+a
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
