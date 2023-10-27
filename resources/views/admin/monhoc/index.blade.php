@@ -113,7 +113,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="actions">
-                                                        <a href="" class="btn btn-sm bg-success-light mr-2">
+                                                        <a href="{{ route('admin.mon_hoc.edit', $mon_hoc['ma_mon_hoc']) }}" class="btn btn-sm bg-success-light mr-2">
                                                             <i class="fas fa-pen" aria-hidden="true"></i>
                                                         </a>
                                                     </div>
