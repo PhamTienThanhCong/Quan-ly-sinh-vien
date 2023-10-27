@@ -50,6 +50,7 @@
                                             <th>Chuyên môn</th>
                                         </tr>
                                     </thead>
+                                    
                                     <tbody>
                                         @foreach ($giangviens as $giangvien)
                                             <tr class="text-center">

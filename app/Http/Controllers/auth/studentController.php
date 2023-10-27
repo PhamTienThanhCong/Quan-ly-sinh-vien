@@ -62,6 +62,7 @@ class studentController extends Controller
         // return view('auth.forgot-password-process', ['email' => $email, 'role' => $role]);
     }
 
+    //mien
     public function home(){
         $page = 'Thông tin cá nhân';
         // get ma sinh vien and ma chuyen nganh
